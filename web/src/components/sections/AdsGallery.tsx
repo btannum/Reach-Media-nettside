@@ -84,11 +84,11 @@ export function AdsGallery() {
 
       <div className="container-rm my-12 text-center lg:my-16">
         <RevealWords
-          text="Statiske annonser vi lager."
+          text="Det kreative."
           className="mx-auto max-w-[16ch] text-headline"
         />
         <p className="mx-auto mt-4 max-w-[40ch] text-small text-fg-muted">
-          Fra kontoer som kjører nå. Ingen konseptskisser.
+          Noen av annonsene vi har laget for kundene våre.
         </p>
       </div>
 
