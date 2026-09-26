@@ -54,7 +54,7 @@ Sammenligningsakser (brief): Reach Media vs. vanlig byrå vs. Upwork/Fiverr.
 - Ingen Ads Manager-skjermbilder i hero; proof-bilder brukes kun i Resultater-seksjonen.
 - **Ikke avklart:** konkret tall for annonsekapasitet per måned. Byråets interne CLAUDE.md (`~/Prosjekter/CLAUDE.md`) nevner «opptil 20 ads/uke for Spekebua» som volum-eksempel; bruk kun etter bekreftelse.
 - **Team på siden (bekreftet av bruker 2026-09-25):** Bendik Tannum (co-founder, kreativ strateg), Kevin Johansen Zeba (co-founder, media buyer, Meta), Sahil (senior developer/backend og Google-ekspert). Jimmy Norberg skal **ikke** nevnes. I tillegg nevnes, uten navn: «en Google-ekspert» og «flere grafiske designere vi jobber med». Budskapet: designerne produserer, men det er Reach Media som planlegger og håndterer annonsene. Ingen oppdiktede personer eller stockbilder.
-- **Vilkår (oppdatert av Bendik 2026-09-26):** ingen bindingstid, 3 måneders oppsigelse (byrå-CLAUDE.md sier 1 mnd; siden bruker 3), oppstartsdepositum 5 000 kr som trekkes fra første faktura. Eksakt prosentsats oppgis ikke på siden.
+- **Vilkår (oppdatert av Bendik 2026-09-26):** ingen bindingstid, 3 måneders oppsigelse (byrå-CLAUDE.md sier 1 mnd; siden bruker 3), oppstartsdepositum 5 000 kr som trekkes fra første faktura (interne vilkår). Hero sier «Ingen oppstartskostnad» (Bendik 2026-09-26): depositumet regnes ikke som kostnad siden det trekkes fra. Eksakt prosentsats oppgis ikke på siden.
 - **Betalingsmodell (avklart 2026-09-25):** hovedsakelig 100 % provisjon av omsetning, men tilpasses marginer; fastpris finnes for de som vil ha det. Se Positioning.
 - Ingen fabrikkerte «+N kunder»-tall, testimonialer eller benchmarks.
 

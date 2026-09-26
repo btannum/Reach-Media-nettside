@@ -80,8 +80,8 @@ export function Hero() {
         {...fade(1.4)}
         className="mt-6 max-w-[52ch] text-body text-fg-muted lg:text-[1.125rem]"
       >
-        Vi planlegger og styrer annonsene på Meta og Google hver dag.
-        Hovedsakelig provisjon av omsetningen de gir, tilpasset marginene dine.
+        Vi planlegger og styrer annonsene på Meta og Google hver dag. Ingen
+        oppstartskostnad og en prisløsning som er snill mot marginene dine.
       </motion.p>
 
       {/* Desktop: kortene ligger i det sticky laget (AdStage) og fyller
