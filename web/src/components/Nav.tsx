@@ -110,7 +110,7 @@ export function Nav() {
                     href={link.href}
                     onClick={(e) => { setOpen(false); handleAnchorClick(e, link.href); }}
                     aria-current={isActive(link.href) ? "page" : undefined}
-                    className={`block py-5 text-headline ${isActive(link.href) ? "text-paper underline decoration-signal-focus underline-offset-[6px]" : "text-paper"}`}
+                    className={`block py-4 text-[1.375rem] font-medium tracking-[-0.01em] ${isActive(link.href) ? "text-paper underline decoration-signal-focus underline-offset-[6px]" : "text-paper"}`}
                   >
                     {link.label}
                   </Link>
