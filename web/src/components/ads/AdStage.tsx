@@ -172,23 +172,27 @@ function Deck({ track }: { track: React.RefObject<HTMLDivElement | null> }) {
 
 /** Statisk vifte til mobil og redusert bevegelse. Ligger i flyten i Hero. */
 export function AdFanStatic() {
+  // Mobil: fire kort med god avstand, så hver annonse faktisk kan sees
+  // (bruker 2026-09-26: seks kort ble for tett).
+  const shown = ads.slice(1, 5);
+  const mid = (shown.length - 1) / 2;
   return (
     <div
       aria-hidden="true"
-      className="relative mx-auto h-[280px] w-full max-w-[420px]"
+      className="relative mx-auto h-[300px] w-full max-w-[440px]"
     >
-      {ads.map((ad, i) => {
-        const d = i - MID;
+      {shown.map((ad, i) => {
+        const d = i - mid;
         return (
           <div
             key={ad.id}
-            className="absolute top-1/2 left-1/2 w-[104px] sm:w-[120px]"
+            className="absolute top-1/2 left-1/2 w-[124px] sm:w-[136px]"
             style={{
               zIndex: i,
-              transform: `translate(-50%, -50%) translate(${d * 44}px, ${Math.abs(d) * 6}px) rotate(${d * 6}deg)`,
+              transform: `translate(-50%, -50%) translate(${d * 84}px, ${Math.abs(d) * 10}px) rotate(${d * 5}deg)`,
             }}
           >
-            <AdCard ad={ad} index={i} />
+            <AdCard ad={ad} index={i} sizes="136px" />
           </div>
         );
       })}

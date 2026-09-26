@@ -63,9 +63,9 @@ export function Sammenligning() {
         </p>
       </div>
 
-      {/* Desktop: tabell i et hvitt kort. */}
-      <div className="mt-12 hidden overflow-hidden rounded-md bg-surface shadow-card md:block">
-        <table className="w-full border-collapse text-small">
+      {/* Samme tabell på alle skjermer. Under md scroller den sidelengs. */}
+      <div className="mt-10 overflow-x-auto rounded-md bg-surface shadow-card md:mt-12 md:overflow-hidden">
+        <table className="w-full min-w-[760px] border-collapse text-small">
           <thead>
             <tr className="border-b border-hairline">
               <th scope="col" className="w-[22%] px-5 py-4 text-left text-label font-medium text-fg-muted">
@@ -99,26 +99,7 @@ export function Sammenligning() {
         </table>
       </div>
 
-      {/* Mobil: stablet per kriterium. */}
-      <dl className="mt-10 flex flex-col gap-6 md:hidden">
-        {rows.map((r) => (
-          <div key={r.criterion} className="rounded-md bg-surface p-5 shadow-card">
-            <dt className="text-title text-[1.125rem]">{r.criterion}</dt>
-            <dd className="mt-3 rounded-sm bg-signal px-3 py-2.5 text-white">
-              <span className="block text-label text-white/80">Reach Media</span>
-              <span className="block text-body">{r.rm}</span>
-            </dd>
-            <dd className="mt-2 px-3 py-1.5">
-              <span className="block text-label text-fg-muted">Vanlig byrå</span>
-              <span className="block text-small text-fg-muted">{r.agency}</span>
-            </dd>
-            <dd className="px-3 py-1.5">
-              <span className="block text-label text-fg-muted">Upwork / Fiverr</span>
-              <span className="block text-small text-fg-muted">{r.freelance}</span>
-            </dd>
-          </div>
-        ))}
-      </dl>
+      <p className="mt-3 text-label text-fg-muted md:hidden">Dra sidelengs for å se hele tabellen.</p>
     </section>
   );
 }
