@@ -11,8 +11,8 @@ import { RevealWords } from "@/components/Reveal";
 import { AdCard } from "@/components/ads/AdCard";
 
 // Seksjon 8, etter Pallet Ross «Every piece of art tells a story»: sentrert
-// overskrift og fire like store kort: én rad på PC (får plass på én skjerm),
-// 2×2 på nettbrett. Kort 1–3 er lenker til casene.
+// overskrift og 2×2 like store, kompakte kort (hele rutenettet får plass på
+// én PC-skjerm). Kort 1–3 er lenker til casene.
 
 // Kundelogo i kortet. Logofilene er hvite med alfa: inverteres på lyse kort.
 function ClientLogo({ name, dark = false, className = "" }: { name: string; dark?: boolean; className?: string }) {
@@ -79,14 +79,14 @@ function KlaCard() {
     <div className="relative flex min-h-[320px] flex-col overflow-hidden rounded-md bg-surface shadow-card">
       {/* Samme 16:9-flate som Spekebua-bildet, i lys grå
           så kortene skilles fra hverandre. Samme hover-zoom som bildene. */}
-      <div className="group/media grid aspect-[16/9] w-full place-items-center overflow-hidden bg-linear-to-b from-[#eceef1] to-[#dfe2e7]">
+      <div className="group/media grid aspect-[5/2] w-full place-items-center overflow-hidden bg-linear-to-b from-[#eceef1] to-[#dfe2e7]">
         <ul
-          className="grid w-[86%] grid-cols-3 gap-2 transition-transform duration-[500ms] ease-reveal group-hover/media:scale-[1.02] sm:w-[80%] sm:gap-3"
+          className="flex h-[84%] gap-3 transition-transform duration-[500ms] ease-reveal group-hover/media:scale-[1.02]"
           aria-label="UGC-videoer for KLA Sport"
         >
           {kla.ads.slice(0, 3).map((ad, i) => (
-            <li key={ad.id}>
-              <AdCard ad={ad} index={i} sizes="(min-width: 1280px) 90px, (min-width: 768px) 13vw, 26vw" interactive showKind={false} priority={false} />
+            <li key={ad.id} className="aspect-[9/16] h-full">
+              <AdCard ad={ad} index={i} sizes="110px" interactive showKind={false} priority={false} />
             </li>
           ))}
         </ul>
@@ -119,13 +119,13 @@ function SpekebuaCard() {
       aria-label={`${spekebua.name}: ${spekebua.headline}`}
       className="group flex min-h-[320px] flex-col overflow-hidden rounded-md bg-surface text-fg shadow-card"
     >
-      <div className="relative aspect-[16/9] w-full overflow-hidden bg-surface-2">
+      <div className="relative aspect-[5/2] w-full overflow-hidden bg-[#e1eaf8]">
         <Image
           src="/proof/spekebua-case.webp"
           alt="Fire statiske annonser vi har laget for Spekebua"
-          width={1600}
-          height={901}
-          sizes="(min-width: 1280px) 25vw, (min-width: 768px) 50vw, 100vw"
+          width={1400}
+          height={560}
+          sizes="(min-width: 768px) 500px, 100vw"
           className="h-full w-full object-cover transition-transform duration-[500ms] ease-reveal group-hover:scale-[1.02]"
         />
       </div>
@@ -152,19 +152,19 @@ function GorillaCard() {
       <span className="absolute top-3 right-3 z-10 inline-flex h-8 items-center rounded-full border border-hairline bg-surface/95 px-3 text-label text-fg backdrop-blur-sm">
         {gorilla.status}
       </span>
-      <div className="relative aspect-[16/9] w-full overflow-hidden bg-surface-2">
+      <div className="relative aspect-[5/2] w-full overflow-hidden bg-surface-2">
         <Image
           src={cover.src}
           alt={cover.alt}
           width={cover.width}
           height={cover.height}
-          sizes="(min-width: 1280px) 25vw, (min-width: 768px) 50vw, 100vw"
+          sizes="(min-width: 768px) 500px, 100vw"
           className="h-full w-full object-cover transition-transform duration-[500ms] ease-reveal group-hover:scale-[1.02]"
           priority={false}
         />
       </div>
-      <div className="flex flex-1 flex-col gap-3 px-5 pt-4 pb-5">
-        <MarketExpand markets={gorilla.markets!} size="md" />
+      <div className="flex flex-1 flex-col gap-2 px-5 pt-4 pb-5">
+        <MarketExpand markets={gorilla.markets!} size="sm" />
         <h3 className="text-title text-fg">{gorilla.headline}</h3>
         <p className="text-small text-fg-muted">{gorilla.summary}</p>
         <span className={`${pill} mt-auto w-fit border border-hairline bg-surface text-fg group-hover:border-hairline-strong`}>
@@ -201,7 +201,7 @@ export function Caser() {
         text="Noen spennende prosjekter."
         className="mx-auto max-w-[16ch] text-center text-headline"
       />
-      <div className="mt-12 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+      <div className="mx-auto mt-12 grid max-w-[920px] gap-4 md:auto-rows-fr md:grid-cols-2">
         <Rise delay={0}>
           <KlaCard />
         </Rise>
