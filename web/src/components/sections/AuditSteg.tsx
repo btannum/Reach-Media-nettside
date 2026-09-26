@@ -2,12 +2,11 @@
 
 import { useRef } from "react";
 import Image from "next/image";
-import { motion, useInView } from "framer-motion";
+import { motion } from "framer-motion";
 import { Button } from "@/components/ui/Button";
 import { RevealWords } from "@/components/Reveal";
 import { ctaHref } from "@/lib/site";
 
-const EASE = [0.22, 1, 0.36, 1] as const;
 
 // Illustrasjoner: public/media/audit/<n>-<slug>.webp (kvadratiske, fra Bendik).
 // Steg uten bilde viser tallet til bildet kommer.
@@ -62,10 +61,9 @@ function Arrow({ dir }: { dir: "left" | "right" }) {
 }
 
 // Seksjon 9. Som «Marketplace for Creativity»: tekst og piler til venstre,
-// fliser som glir inn fra høyre. TODO: leveringstid (SPEC.md §7).
+// fliser som vises med en gang (ingen innglidning, bruker 2026-09-26). TODO: leveringstid (SPEC.md §7).
 export function AuditSteg() {
   const rowRef = useRef<HTMLUListElement>(null);
-  const inView = useInView(rowRef, { once: true, amount: 0.3 });
 
   const scrollBy = (dir: -1 | 1) =>
     rowRef.current?.scrollBy({ left: dir * (TILE + GAP), behavior: "smooth" });
@@ -119,13 +117,7 @@ export function AuditSteg() {
             className="flex snap-x snap-mandatory gap-6 overflow-x-auto pb-2 pe-3 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
           >
             {steps.map((step, i) => (
-              <motion.li
-                key={step.title}
-                className="w-[200px] shrink-0 snap-start"
-                initial={{ opacity: 0, x: 80 }}
-                animate={inView ? { opacity: 1, x: 0 } : undefined}
-                transition={{ duration: 0.6, delay: i * 0.09, ease: EASE }}
-              >
+              <li key={step.title} className="w-[200px] shrink-0 snap-start">
                 <div className="relative flex aspect-square flex-col justify-between overflow-hidden rounded-md bg-surface-2 p-5">
                   {step.image ? (
                     <>
@@ -134,6 +126,7 @@ export function AuditSteg() {
                         alt=""
                         fill
                         sizes="200px"
+                        loading="eager"
                         className="object-cover"
                       />
                       <span className="relative z-10 inline-flex size-8 items-center justify-center rounded-full bg-surface text-small font-bold text-fg shadow-card tnum">
@@ -149,7 +142,7 @@ export function AuditSteg() {
                 </div>
                 {step.image && <h3 className="mt-3 text-title text-fg">{step.title}</h3>}
                 <p className={`${step.image ? "mt-1" : "mt-3"} text-small text-fg-muted`}>{step.body}</p>
-              </motion.li>
+              </li>
             ))}
           </ul>
           </div>

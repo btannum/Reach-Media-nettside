@@ -1,11 +1,13 @@
 import Link from "next/link";
 import { ads } from "@/lib/ads";
-import { AdCard } from "@/components/ads/AdCard";
+import { UgcCarousel } from "@/components/ads/UgcCarousel";
 import { RevealWords } from "@/components/Reveal";
 
-// Seksjon 3, UGC. Tekst til venstre, de tre KLA-videoene til høyre
-// (spillbare). Bygger videre på KLA-casen.
-const ugc = ads.filter((ad) => ad.kind === "UGC");
+// Seksjon 3, UGC. Tekst til venstre, KLA-videoene til høyre i en karusell
+// man kan bla i (spillbare). Bygger videre på KLA-casen.
+// Blandet rekkefølge, så de nye og de gamle videoene veksler.
+const order = [5, 6, 1, 7, 4, 3, 8, 2];
+const ugc = order.map((n) => ads.find((ad) => ad.id === `ugc-0${n}`)!);
 
 export function Ugc() {
   return (
@@ -29,16 +31,9 @@ export function Ugc() {
           </Link>
         </div>
 
-        <ul
-          aria-label="UGC-videoer"
-          className="col-span-12 flex snap-x snap-mandatory gap-4 overflow-x-auto pb-2 [scrollbar-width:none] lg:col-span-7 lg:grid lg:grid-cols-3 lg:gap-6 lg:overflow-visible [&::-webkit-scrollbar]:hidden"
-        >
-          {ugc.map((ad, i) => (
-            <li key={ad.id} className="w-[200px] shrink-0 snap-start lg:w-auto">
-              <AdCard ad={ad} index={i} sizes="(min-width: 1024px) 220px, 200px" interactive priority={false} />
-            </li>
-          ))}
-        </ul>
+        <div className="col-span-12 min-w-0 lg:col-span-7">
+          <UgcCarousel ads={ugc} />
+        </div>
       </div>
     </section>
   );

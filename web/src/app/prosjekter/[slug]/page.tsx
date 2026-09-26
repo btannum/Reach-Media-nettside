@@ -4,6 +4,7 @@ import Link from "next/link";
 import { BeforeAfter } from "@/components/BeforeAfter";
 import { notFound } from "next/navigation";
 import { AdCard } from "@/components/ads/AdCard";
+import { UgcCarousel } from "@/components/ads/UgcCarousel";
 import { MarketExpand } from "@/components/Flags";
 import { Button } from "@/components/ui/Button";
 import { getProject, projects } from "@/lib/projects";
@@ -90,13 +91,20 @@ export default async function ProsjektPage({ params }: Props) {
             {p.ads.length > 0 && (
               <>
                 <h2 className={`text-title ${p.cover ? "mt-8" : ""}`}>Annonsene</h2>
-                <ul className="mt-5 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-2">
-                  {p.ads.map((ad, i) => (
-                    <li key={ad.id}>
-                      <AdCard ad={ad} index={i} sizes="200px" interactive />
-                    </li>
-                  ))}
-                </ul>
+                {p.ads.length > 4 ? (
+                  // Mange annonser: to rader som blar sidelengs i stedet for en lang kolonne.
+                  <div className="mt-5">
+                    <UgcCarousel ads={p.ads} rows={2} label={`Annonser for ${p.name}`} sizes="200px" />
+                  </div>
+                ) : (
+                  <ul className="mt-5 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-2">
+                    {p.ads.map((ad, i) => (
+                      <li key={ad.id}>
+                        <AdCard ad={ad} index={i} sizes="200px" interactive />
+                      </li>
+                    ))}
+                  </ul>
+                )}
               </>
             )}
           </aside>

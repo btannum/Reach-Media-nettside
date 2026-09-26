@@ -78,7 +78,8 @@ export const projects: Project[] = [
     ],
     services: ["Meta-annonsering", "UGC-produksjon", "Shopify-migrering"],
     beforeAfter: { caption: "Fra gammel nettbutikk til Shopify. Pågående." },
-    ads: [byId("ugc-01"), byId("ugc-02"), byId("ugc-03")],
+    // Alle KLA-videoene. Forsidekortet viser bare de tre første.
+    ads: [1, 2, 3, 5, 6, 7, 4, 8].map((n) => byId(`ugc-0${n}`)),
   },
   {
     slug: "gorilla-games",

@@ -12,11 +12,7 @@ import {
   useTransform,
   type MotionValue,
 } from "framer-motion";
-import Link from "next/link";
 import { RevealWords } from "@/components/Reveal";
-import { Button } from "@/components/ui/Button";
-import { ctaHref } from "@/lib/site";
-import { handleAnchorClick } from "@/lib/anchor";
 
 type Chip = {
   value: number;
@@ -78,20 +74,19 @@ const google: Proof = {
   caption: "1,44 M i konverteringsverdi",
 };
 
-const highlights = [
-  { value: "+2 mill.", label: "kr i omsetning på ett år" },
-  { value: "Samme ROAS", label: "med 50 % mer budsjett" },
-  { value: "10 000+", label: "datapunkter flyttet til Shopify" },
-  { value: "Server-side", label: "tracking satt opp. Spekebua eier dataene." },
+// Hva vi gjorde (bruker 2026-09-26). Kunden navngis ikke på forsiden.
+const tiltak = [
+  "Økte det kreative volumet",
+  "Testet 10x flere konsepter",
+  "Økte annonsevolumet med 100 %",
+  "Satte opp riktig tracking, inkludert server-side tracking",
 ];
 
-const tiltak = [
-  "Meta-annonsering",
-  "Google Ads",
-  "Shopify-migrering",
-  "Server-side tracking",
-  "DataFeedWatch",
-  "Merchant Center",
+// Resultatet, som enkle linjer i stedet for store tall.
+const resultat = [
+  { label: "Økning i omsetning", value: "+2 mill. kr" },
+  { label: "Budsjett", value: "+50 %" },
+  { label: "Lønnsomhet (ROAS)", value: "Uendret" },
 ];
 
 // Markup er lik på server og klient (starter på 0); ved redusert bevegelse
@@ -197,7 +192,7 @@ function ProofCard({
   );
 }
 
-// Seksjon 10. Spekebua-casen: skjermbildene er fra Spekebuas kontoer.
+// Seksjon: resultater fra en kunde (ikke navngitt på forsiden).
 // Meta-kortet vokser ut mens du scroller (som rutenettet i videoen).
 export function Resultater() {
   const reduce = Boolean(useReducedMotion());
@@ -215,57 +210,56 @@ export function Resultater() {
     <section id="resultater" className="container-rm section-y overflow-x-clip">
       <div className="grid-12 gap-y-12">
         <div className="col-span-12 lg:col-span-5">
-          <RevealWords text="+2 mill på ett år. Samme lønnsomhet." className="text-headline" />
-          <p className="mt-3 text-small text-fg-muted">Spekebua, ett år med Reach Media.</p>
+          <div className="flex items-end gap-3">
+            <RevealWords text="Resultatene snakker for seg selv." className="max-w-[11ch] text-headline" />
+            {/* Pil mot skjermbildene: høyre på desktop, ned på mobil. */}
+            <motion.span
+              aria-hidden="true"
+              className="mb-1 shrink-0 text-signal"
+              animate={reduce ? undefined : { x: [0, 6, 0] }}
+              transition={{ duration: 1.6, repeat: Infinity, ease: "easeInOut" }}
+            >
+              <svg viewBox="0 0 24 24" className="size-9 rotate-90 lg:rotate-0" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M4 12h15M13 6l6 6-6 6" />
+              </svg>
+            </motion.span>
+          </div>
           <p className="measure mt-6 text-body text-fg-muted">
-            Hos Spekebua tok vi over Meta og Google i ett år: bygde opp volumet
-            på statics, testet vinkler mot gaver, tilbud, konfirmasjon og
-            sortiment, og skalerte det som solgte.
-          </p>
-          <p className="measure mt-4 text-body text-fg-muted">
-            Samtidig flyttet vi butikken til Shopify (over 10 000 datapunkter),
-            satte opp server-side tracking og ryddet produktfeeden i
-            DataFeedWatch og Merchant Center. Resultat: over 2 millioner kroner
-            mer i omsetning med samme lønnsomhet.
+            En nettbutikk vi har jobbet med i litt under ett år. Sammen har vi
+            økt omsetningen med over 2 millioner kroner, uten å gå på
+            bekostning av lønnsomheten.
           </p>
 
-          <ul className="mt-8 grid grid-cols-2 gap-x-8 gap-y-6" aria-label="Nøkkeltall">
-            {highlights.map((h) => (
-              <li key={h.label}>
-                <span className="tnum block text-metric text-[1.75rem] sm:text-[2rem] sm:whitespace-nowrap">{h.value}</span>
-                <span className="mt-1 block text-label text-fg-muted">{h.label}</span>
-              </li>
-            ))}
-          </ul>
-
-          <ul className="mt-8 flex flex-wrap gap-2" aria-label="Tiltak">
+          <h3 className="mt-10 text-title">Dette gjorde vi</h3>
+          <ul className="mt-4 flex flex-col gap-3">
             {tiltak.map((t) => (
-              <li key={t} className="rounded-full bg-surface px-3.5 py-1.5 text-small text-fg shadow-card">
+              <li key={t} className="flex items-start gap-3 text-body text-fg">
+                <span aria-hidden="true" className="mt-[0.6em] size-1.5 shrink-0 rounded-full bg-signal" />
                 {t}
               </li>
             ))}
           </ul>
 
-          <div className="mt-8 flex flex-wrap items-center gap-4">
-            <Button href="/prosjekter/spekebua" variant="secondary">
-              Les hele casen
-            </Button>
-            <Link
-              href={ctaHref}
-              onClick={(e) => handleAnchorClick(e, ctaHref)}
-              className="text-body text-fg underline decoration-hairline-strong underline-offset-[3px] transition-colors duration-[180ms] ease-state hover:decoration-signal-focus"
-            >
-              Book gratis audit
-            </Link>
-          </div>
+          <h3 className="mt-10 text-title">Resultatet</h3>
+          <dl className="mt-4 border-t border-hairline">
+            {resultat.map((r) => (
+              <div key={r.label} className="flex items-baseline justify-between gap-6 border-b border-hairline py-3">
+                <dt className="text-body text-fg-muted">{r.label}</dt>
+                <dd className="tnum text-body font-semibold text-fg">{r.value}</dd>
+              </div>
+            ))}
+          </dl>
+          <p className="measure mt-4 text-small text-fg-muted">
+            Over 2 millioner kroner ekstra i omsetning, med samme ROAS på 50 %
+            mer budsjett.
+          </p>
         </div>
 
         <div ref={proofRef} className="col-span-12 flex flex-col gap-10 pt-4 lg:col-span-7 lg:gap-12 lg:pl-6">
           <ProofCard proof={meta} run={inView} instant={reduce} scale={scale} />
           <ProofCard proof={google} run={inView} instant={reduce} className="lg:ml-12" floatDelay={1.5} />
           <p className="text-small text-fg-muted">
-            Skjermbildene er tatt rett fra Spekebuas Meta Ads Manager og Google
-            Ads. Vi har markert tallene som betyr noe.
+            Skjermbilder tatt rett fra kundens annonsekontoer.
           </p>
         </div>
       </div>

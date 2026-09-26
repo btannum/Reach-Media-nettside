@@ -19,7 +19,7 @@ mkdir -p "$OUT_ADS" "$OUT_LOGOS" "$TMP"
 # versjon av seg selv i stedet for å beskjæres.
 ads() {
   i=0
-  find "$ADS_SRC" -maxdepth 1 -type f -iname '*.png' | LC_ALL=C sort | while IFS= read -r f; do
+  find "$ADS_SRC" -maxdepth 1 -type f -iname '*.png' ! -name '8.png' ! -name '13.png' | LC_ALL=C sort | while IFS= read -r f; do
     i=$((i + 1))
     n=$(printf '%02d' "$i")
     ffmpeg -nostdin -v error -y -i "$f" -filter_complex \
@@ -32,8 +32,11 @@ ads() {
 
 # Filer lagt til senere, med fast nummer så ads.ts-id-ene ikke flytter seg.
 # Format: "<nummer>|<sti relativt til $SRC>"
-EXTRA_ADS="22|Ads skal brukes i nettsie/8.png
-23|Ads skal brukes i nettsie/13.png"
+EXTRA_ADS="22|Ads skal brukes i nettsie/ADS/8.png
+23|Ads skal brukes i nettsie/ADS/13.png
+24|Ads skal brukes i nettsie/bikeplay-tradlos-carplay-mc.png
+25|Ads skal brukes i nettsie/bikeplay-kundeomtale.png
+26|Ads skal brukes i nettsie/carplay-for-etter.png"
 
 ads_extra() {
   printf '%s\n' "$EXTRA_ADS" | while IFS='|' read -r n rel; do
@@ -47,16 +50,30 @@ ads_extra() {
   done
 }
 
+# UGC-videoer lagt til senere, med faste numre så rekkefølgen ikke endres.
+UGC_EXTRA_SRC="$SRC/Ads skal brukes i nettsie/UGC videoer nye"
+
 # UGC: HEVC .mov -> H.264 mp4 720x1280 + poster.
+ugc_one() {
+  ffmpeg -nostdin -v error -y -i "$1" -vf "scale=720:1280,format=yuv420p" -c:v libx264 -preset slow -crf 27 -movflags +faststart -c:a aac -b:a 96k "$OUT_ADS/ugc-$2.mp4"
+  ffmpeg -nostdin -v error -y -ss 1 -i "$OUT_ADS/ugc-$2.mp4" -frames:v 1 -vf "scale=540:960" -update 1 "$TMP/ugc-$2.png"
+  cwebp -quiet -q 82 "$TMP/ugc-$2.png" -o "$OUT_ADS/ugc-$2.webp"
+  echo "ugc-$2.mp4 + poster <- $(basename "$1")"
+}
+
+# Filene i UGC_EXTRA_SRC heter NN-navn.mov; NN blir ugc-NN.
+video_extra() {
+  find "$UGC_EXTRA_SRC" -maxdepth 1 -type f -iname '*.mov' | LC_ALL=C sort | while IFS= read -r f; do
+    ugc_one "$f" "$(basename "$f" | cut -c1-2)"
+  done
+}
+
 video() {
   i=0
   find "$UGC_SRC" -maxdepth 1 -type f -iname '*.mov' | LC_ALL=C sort | while IFS= read -r f; do
     i=$((i + 1))
     n=$(printf '%02d' "$i")
-    ffmpeg -nostdin -v error -y -i "$f" -vf "scale=720:1280,format=yuv420p" -c:v libx264 -preset slow -crf 27 -movflags +faststart -c:a aac -b:a 96k "$OUT_ADS/ugc-$n.mp4"
-    ffmpeg -nostdin -v error -y -ss 1 -i "$OUT_ADS/ugc-$n.mp4" -frames:v 1 -vf "scale=540:960" -update 1 "$TMP/ugc-$n.png"
-    cwebp -quiet -q 82 "$TMP/ugc-$n.png" -o "$OUT_ADS/ugc-$n.webp"
-    echo "ugc-$n.mp4 + poster <- $(basename "$f")"
+    ugc_one "$f" "$n"
   done
 }
 
@@ -89,7 +106,8 @@ logos() {
 case "$what" in
   ads) ads; ads_extra ;;
   extra) ads_extra ;;
-  video) video ;;
+  video) video; video_extra ;;
+  video_extra) video_extra ;;
   logos) logos ;;
-  all) ads; ads_extra; logos; video ;;
+  all) ads; ads_extra; logos; video; video_extra ;;
 esac

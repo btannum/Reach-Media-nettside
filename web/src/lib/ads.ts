@@ -51,25 +51,34 @@ export const ads: Ad[] = [
   s(15, "Tropicos: fra krus til glans i én bevegelse"),
   s(16, "Tropicos: glansen alle spør om"),
   s(17, "Spekebua: norske smaker, ekte kvalitet"),
-  s(18, "Harry: matcha superblend"),
   s(19, "Beeki: sluttet å skjule de røde partiene"),
   s(20, "KLA: endelig trening uten frosne fingre"),
   s(21, "Spekebua: påskeegg som passer alle på lista"),
   s(22, "Spekebua: den perfekte løsningen til konfirmasjonen"),
   s(23, "Spekebua: alt du trenger til konfirmasjonen, koldtbord for 10–50"),
+  s(24, "BikePlay: trådløs CarPlay til MC"),
+  s(25, "BikePlay: helt suveren enhet, virker som det skal"),
+  s(26, "CarPlay Norge: før og etter, ble som en ny bil innvendig"),
   u(1, "UGC: sammenligning"),
   u(2, "UGC: sammenligning, ny versjon"),
   u(3, "UGC: du vet du skulle hatt den"),
+  u(4, "UGC: og de er like bra som de ser ut"),
+  u(5, "UGC: Extreme Contact-hanskene"),
+  u(6, "UGC: keeper viser Wave Contact-hanskene"),
+  u(7, "UGC: intervju på banen"),
+  u(8, "UGC: anmeldelse fra keeper"),
 ];
 
 const byId = (id: string) => ads.find((a) => a.id === id)!;
 
 /** Kortene i koreografien Hero → Problem → Løsning. Én per merke der mulig. */
 export const deckAds: Ad[] = [
-  { ...byId("static-01") },
-  { ...byId("static-09") },
+  { ...byId("static-24") },
   { ...byId("static-12"), badge: "15,5× ROAS" },
-  { ...byId("static-07"), badge: "10,4 % konv.rate" },
+  { ...byId("static-14") },
   { ...byId("static-20"), badge: "1\u00a0073 kjøp" },
-  { ...byId("static-04") },
+  { ...byId("static-26"), badge: "10,4 % konv.rate" },
+  { ...byId("static-23") },
+  { ...byId("static-21") },
+  { ...byId("static-25") },
 ];

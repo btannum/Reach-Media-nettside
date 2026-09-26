@@ -59,10 +59,10 @@ function fanScale(vh: number) {
 
 function keyframes(i: number, hs = 1) {
   const d = i - MID;
-  const fan = { x: d * 8.4 * hs, y: 67 + (1 - hs) * 3 + Math.abs(d) * 1.2, r: d * 6, s: hs };
+  const fan = { x: d * 10.6 * Math.max(hs, 0.85), y: 61 + (1 - hs) * 3 + Math.abs(d) * 1.4, r: d * 3.5, s: hs };
   const stack = { x: 0, y: 56, r: d * 1.5, s: 0.62 };
   const right = { x: 26, y: 52, r: d * 1.5, s: 0.62 };
-  const spread = { x: 15 + i * 4.6, y: 40 + i * 4.8, r: -8 + i * 3.2, s: 0.8 };
+  const spread = { x: 9 + i * 4.8, y: 32 + i * 4.9, r: -6 + i * 1.8, s: 0.8 };
   const seq = <T,>(a: T, b: T, c: T, e: T) => [a, a, b, b, c, e, e];
   return {
     x: seq(fan.x, stack.x, right.x, spread.x),
