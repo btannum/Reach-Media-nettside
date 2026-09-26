@@ -36,7 +36,7 @@ export function Footer() {
         <div className="grid gap-10 lg:grid-cols-12">
           <div className="lg:col-span-5">
             <Wordmark imgClassName="h-7 w-auto lg:h-9" />
-            <p className="mt-6 text-title">Betalt annonsering for Shopify-butikker.</p>
+            <p className="mt-6 text-title">Betalt annonsering for norske nettbutikker.</p>
             <p className="measure mt-3 text-small text-fg-muted">
               Vi planlegger og håndterer annonsene selv, og tar hovedsakelig
               betalt av omsetningen de gir.
