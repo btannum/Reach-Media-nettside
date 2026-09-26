@@ -25,7 +25,7 @@ export function Hero() {
       id="top"
       className="container-rm flex min-h-svh flex-col items-center overflow-x-clip pt-28 pb-10 text-center lg:pt-28 lg:pb-16"
     >
-      <h1 className="max-w-[18ch] lg:max-w-[20ch] text-[clamp(2.5rem,5.2vw,4.5rem)] leading-[1] font-bold tracking-[-0.03em]">
+      <h1 className="max-w-[20ch] text-[clamp(2.125rem,5.2vw,4.5rem)] leading-[1] font-bold tracking-[-0.03em]">
         {headline.map((word, i) => (
           <motion.span
             key={i}
@@ -40,7 +40,7 @@ export function Hero() {
         ))}
         {/* «100 % resultatbasert.» i pop-farge, med understrek som tegner seg
             fra venstre etter at ordene har landet. */}
-        <span className="relative inline-block">
+        <span className="relative inline-block whitespace-nowrap">
           {emphasis.map((word, i) => (
             <motion.span
               key={word}
