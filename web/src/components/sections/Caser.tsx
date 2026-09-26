@@ -11,7 +11,8 @@ import { RevealWords } from "@/components/Reveal";
 import { AdCard } from "@/components/ads/AdCard";
 
 // Seksjon 8, etter Pallet Ross «Every piece of art tells a story»: sentrert
-// overskrift og 2×2 store kort. Kort 1–3 er lenker til casene.
+// overskrift og fire like store kort: én rad på PC (får plass på én skjerm),
+// 2×2 på nettbrett. Kort 1–3 er lenker til casene.
 
 // Kundelogo i kortet. Logofilene er hvite med alfa: inverteres på lyse kort.
 function ClientLogo({ name, dark = false, className = "" }: { name: string; dark?: boolean; className?: string }) {
@@ -75,7 +76,7 @@ function Rise({
 function KlaCard() {
   // De tre UGC-videoene side om side, spillbare, som i UGC-seksjonen.
   return (
-    <div className="relative flex min-h-[360px] flex-col overflow-hidden rounded-md bg-surface shadow-card">
+    <div className="relative flex min-h-[320px] flex-col overflow-hidden rounded-md bg-surface shadow-card">
       {/* Samme 16:9-flate som Spekebua-bildet, i lys grå
           så kortene skilles fra hverandre. Samme hover-zoom som bildene. */}
       <div className="group/media grid aspect-[16/9] w-full place-items-center overflow-hidden bg-linear-to-b from-[#eceef1] to-[#dfe2e7]">
@@ -85,7 +86,7 @@ function KlaCard() {
         >
           {kla.ads.slice(0, 3).map((ad, i) => (
             <li key={ad.id}>
-              <AdCard ad={ad} index={i} sizes="(min-width: 1024px) 170px, 26vw" interactive priority={false} />
+              <AdCard ad={ad} index={i} sizes="(min-width: 1280px) 90px, (min-width: 768px) 13vw, 26vw" interactive showKind={false} priority={false} />
             </li>
           ))}
         </ul>
@@ -93,7 +94,7 @@ function KlaCard() {
       <Link
         href="/prosjekter/kla"
         aria-label={`${kla.name}: ${kla.headline}`}
-        className="group flex flex-1 flex-col gap-2 px-6 pt-5 pb-6"
+        className="group flex flex-1 flex-col gap-2 px-5 pt-4 pb-5"
       >
         <div className="flex items-center justify-between gap-3">
           <ClientLogo name="KLA Sport" className="h-7" />
@@ -116,7 +117,7 @@ function SpekebuaCard() {
     <Link
       href="/prosjekter/spekebua"
       aria-label={`${spekebua.name}: ${spekebua.headline}`}
-      className="group flex min-h-[360px] flex-col overflow-hidden rounded-md bg-surface text-fg shadow-card"
+      className="group flex min-h-[320px] flex-col overflow-hidden rounded-md bg-surface text-fg shadow-card"
     >
       <div className="relative aspect-[16/9] w-full overflow-hidden bg-surface-2">
         <Image
@@ -124,11 +125,11 @@ function SpekebuaCard() {
           alt="Fire statiske annonser vi har laget for Spekebua"
           width={1600}
           height={901}
-          sizes="(max-width: 1024px) 100vw, 50vw"
+          sizes="(min-width: 1280px) 25vw, (min-width: 768px) 50vw, 100vw"
           className="h-full w-full object-cover transition-transform duration-[500ms] ease-reveal group-hover:scale-[1.02]"
         />
       </div>
-      <div className="flex flex-1 flex-col gap-2 px-6 pt-5 pb-6">
+      <div className="flex flex-1 flex-col gap-2 px-5 pt-4 pb-5">
         <div className="flex h-8 items-center">
           <ClientLogo name="Spekebua" className="h-7" />
         </div>
@@ -146,9 +147,9 @@ function GorillaCard() {
     <Link
       href="/prosjekter/gorilla-games"
       aria-label={`${gorilla.name}: ${gorilla.headline}`}
-      className="group relative flex min-h-[360px] flex-col overflow-hidden rounded-md bg-surface shadow-card"
+      className="group relative flex min-h-[320px] flex-col overflow-hidden rounded-md bg-surface shadow-card"
     >
-      <span className="absolute top-5 right-5 z-10 inline-flex h-8 items-center rounded-full border border-hairline bg-surface/95 px-3 text-label text-fg backdrop-blur-sm">
+      <span className="absolute top-3 right-3 z-10 inline-flex h-8 items-center rounded-full border border-hairline bg-surface/95 px-3 text-label text-fg backdrop-blur-sm">
         {gorilla.status}
       </span>
       <div className="relative aspect-[16/9] w-full overflow-hidden bg-surface-2">
@@ -157,12 +158,12 @@ function GorillaCard() {
           alt={cover.alt}
           width={cover.width}
           height={cover.height}
-          sizes="(max-width: 1024px) 100vw, 50vw"
+          sizes="(min-width: 1280px) 25vw, (min-width: 768px) 50vw, 100vw"
           className="h-full w-full object-cover transition-transform duration-[500ms] ease-reveal group-hover:scale-[1.02]"
           priority={false}
         />
       </div>
-      <div className="flex flex-1 flex-col gap-3 px-6 pt-5 pb-6">
+      <div className="flex flex-1 flex-col gap-3 px-5 pt-4 pb-5">
         <MarketExpand markets={gorilla.markets!} size="md" />
         <h3 className="text-title text-fg">{gorilla.headline}</h3>
         <p className="text-small text-fg-muted">{gorilla.summary}</p>
@@ -176,7 +177,7 @@ function GorillaCard() {
 
 function SamarbeidCard() {
   return (
-    <div className="flex min-h-[360px] flex-col rounded-md bg-surface-2 p-6">
+    <div className="flex min-h-[320px] flex-col rounded-md bg-surface-2 p-5">
       <h3 className="text-title text-fg">Slik ser et samarbeid ut.</h3>
       <ol className="relative mt-5 flex flex-1 flex-col justify-between border-l border-hairline-strong pl-5">
         {steps.map((step) => (
@@ -200,7 +201,7 @@ export function Caser() {
         text="Noen spennende prosjekter."
         className="mx-auto max-w-[16ch] text-center text-headline"
       />
-      <div className="mt-12 grid gap-4 lg:grid-cols-2">
+      <div className="mt-12 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
         <Rise delay={0}>
           <KlaCard />
         </Rise>
