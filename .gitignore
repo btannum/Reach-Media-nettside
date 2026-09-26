@@ -1,0 +1,15 @@
+# Råmateriale (268 MB, .mov over GitHub-grensen). Web-klare kopier ligger i web/public/media.
+Medier /
+# Skjermbilder fra QA
+.impeccable/review/
+.impeccable/mocks/
+# Next/Node
+web/node_modules/
+web/.next/
+web/out/
+web/*.tsbuildinfo
+web/next-env.d.ts
+# Hemmeligheter
+web/.env*
+!web/.env.example
+.DS_Store

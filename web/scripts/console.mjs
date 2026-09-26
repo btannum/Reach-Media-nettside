@@ -1,0 +1,10 @@
+import { chromium } from "playwright-core";
+const b = await chromium.launch({ channel: "chrome", headless: true });
+const p = await b.newPage({ viewport: { width: 1440, height: 900 } });
+p.on("console", m => { if (m.type() === "error" || m.type() === "warning") console.log("[" + m.type() + "]", m.text().slice(0, 600)); });
+p.on("pageerror", e => console.log("[pageerror]", e.message.slice(0, 600)));
+await p.goto("http://localhost:3002/", { waitUntil: "networkidle" });
+await p.waitForTimeout(1500);
+const s = await p.evaluate(() => { const h = document.querySelector("h1"); return h ? getComputedStyle(h).opacity + " | " + h.getAttribute("style") : "no h1"; });
+console.log("h1:", s);
+await b.close();
