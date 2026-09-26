@@ -18,7 +18,7 @@ export const site = {
 } as const;
 
 export const navLinks = [
-  { href: "/#audit", label: "Slik funker det" },
+  { href: "/#audit", label: "Slik funker auditen" },
   { href: "/#resultater", label: "Resultater" },
   { href: "/#om-oss", label: "Om oss" },
   { href: "/prosjekter", label: "Prosjekter" },
