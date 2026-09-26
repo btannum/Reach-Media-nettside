@@ -46,7 +46,7 @@ const meta: Proof = {
   id: "meta",
   title: "Meta Ads Manager",
   src: "/proof/meta-ads-manager.png",
-  width: 1815,
+  width: 1859,
   height: 847,
   chips: [
     { value: 15.51, format: (n) => n.toFixed(2), label: "ROAS", width: 5 },
