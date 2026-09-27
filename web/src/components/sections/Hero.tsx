@@ -25,7 +25,7 @@ export function Hero() {
       id="top"
       className="container-rm flex min-h-svh flex-col items-center overflow-x-clip pt-28 pb-10 text-center lg:pt-28 lg:pb-16"
     >
-      <h1 className="max-w-[20ch] text-[clamp(2.125rem,5.2vw,4.5rem)] leading-[1] font-bold tracking-[-0.03em]">
+      <h1 className="max-w-[20ch] text-[clamp(1.5rem,7.6vw,2.5rem)] leading-[1.05] font-bold tracking-[-0.03em] sm:text-[clamp(2.125rem,5.2vw,4.5rem)] sm:leading-[1]">
         {headline.map((word, i) => (
           <motion.span
             key={i}
@@ -38,6 +38,8 @@ export function Hero() {
             {"\u00a0"}
           </motion.span>
         ))}
+        {/* Fast linjeskift: to linjer på alle skjermer, også smale mobiler. */}
+        <br />
         {/* «100 % resultatbasert.» i pop-farge, med understrek som tegner seg
             fra venstre etter at ordene har landet. */}
         <span className="relative inline-block whitespace-nowrap">
