@@ -37,22 +37,20 @@ export const projects: Project[] = [
     category: "Spekemat, Meta og Google",
     headline: "+2 mill på ett år. Samme lønnsomhet.",
     summary:
-      "Norges største utvalg av spekemat. Ett år med Meta, Google, Shopify-migrering og server-side tracking, med samme lønnsomhet som før.",
+      "Norges største utvalg av spekemat. Ett år med Meta og Google, flere konsepter og nye vinkler, med samme lønnsomhet som før.",
     metrics: [
       { value: "+2 mill.", label: "kr i omsetning på ett år" },
       { value: "Samme ROAS", label: "med 50 % mer budsjett" },
-      { value: "10 000+", label: "datapunkter flyttet" },
+      { value: "10x", label: "flere konsepter testet" },
     ],
     body: [
       "Hos Spekebua tok vi over Meta og Google i ett år: bygde opp volumet på statics, testet vinkler mot gaver, tilbud, konfirmasjon og sortiment, og skalerte det som solgte.",
-      "Samtidig flyttet vi butikken til Shopify (over 10 000 datapunkter), satte opp server-side tracking og ryddet produktfeeden i DataFeedWatch og Merchant Center.",
+      "Det som gjorde lønnsomheten så sterk, var volumet. Vi testet 10 ganger flere konsepter og doblet antall annonser, så vi hele tiden hadde nye vinkler å skalere videre på.",
       "Resultat: over 2 millioner kroner mer i omsetning med samme lønnsomhet.",
     ],
     services: [
       "Meta-annonsering",
       "Google Ads",
-      "Shopify-migrering",
-      "Server-side tracking",
       "DataFeedWatch",
       "Merchant Center",
     ],

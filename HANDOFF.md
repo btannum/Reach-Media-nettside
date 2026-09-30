@@ -1,6 +1,6 @@
 # Handoff: Reach Media nettside
 
-**Sist oppdatert:** 2026-09-27
+**Sist oppdatert:** 2026-09-30
 **Status:** Bendik er fornøyd med siden slik den er nå. Alt er pushet og live. Ingen lokale endringer venter.
 
 Les denne filen først. Deretter `PRODUCT.md`, `DESIGN.md` og `SPEC.md` ved behov.
@@ -31,6 +31,16 @@ Den eldre `HANDOFF-2026-09-26.md` gjelder fortsatt for det den beskriver (Om oss
 **Sjekk før push:** `npx tsc --noEmit` og `npm run lint` i `web/`.
 **QA-skjermbilder:** playwright-core med installert Chrome (`channel: "chrome"`), lagres i `.impeccable/review/`.
 **Medier:** kildefiler i `Medier /` (merk mellomrommet i mappenavnet). `web/scripts/media.sh` konverterer til WebP/MP4 i `web/public/media/`.
+
+---
+
+## Hva vi gjorde 30. september (alt live)
+
+- **Resultater:** fjernet «Skjermbilder tatt rett fra kundens annonsekontoer.» Punkter nå: annonsevolum +100 %, 10x flere konsepter, tracking. «Vinnende annonser 5x» ligger som egen linje under «Resultatet».
+- **Spekebua-casen:** ingen omtale av Shopify-flytting eller server-side tracking (Bendik vil ikke nevne det). Fokus på volum i konsepter og vinkler. Tall nr. 3 er «10x flere konsepter testet». Også fjernet «For Spekebua: over 10 000 datapunkter» i Tjenester.
+- **Rekkefølge:** «Butikker vi har skalert» (Kundelogoer) ligger rett etter Problem-seksjonen, før Resultater.
+- **Delingsbilde:** `src/app/opengraph-image.png` (1200×630, logo på hvitt) så lenkedeling ikke viser første annonse.
+- **KLA før/etter:** merket viser «Til» + ekte Shopify-logo (`public/media/shopify-logo.png`, transparent). Kilde: `Medier /Logoer/shopify-logo.png`.
 
 ---
 

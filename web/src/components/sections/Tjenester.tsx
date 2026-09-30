@@ -13,7 +13,7 @@ const services = [
   },
   {
     title: "Shopify-utvikling og migrering",
-    body: "Flytting til Shopify med produkter, varianter, kunder og ordrehistorikk intakt. For Spekebua: over 10 000 datapunkter.",
+    body: "Flytting til Shopify med produkter, varianter, kunder og ordrehistorikk intakt.",
   },
   {
     title: "Merchant Center og DataFeedWatch",

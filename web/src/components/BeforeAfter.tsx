@@ -46,14 +46,6 @@ function Browser({
   );
 }
 
-function ShopifyMark() {
-  return (
-    <svg viewBox="0 0 24 24" className="size-4" aria-hidden="true" fill="currentColor">
-      <path d="M15.3 4.1c-.1-.1-.3-.1-.4-.1l-1.1-.1-.8-.8c-.8-.8-1.8-.9-2.7-.6-1.1.4-2 1.5-2.6 3l-2.3.7c-.4.1-.6.3-.7.7L3 19.6l11.6 2.2 4.8-1.2-2.9-15.5c0-.5-.4-1-1.2-1zm-3.9.6c.3-.1.6-.1.9 0l-1.6.5c.2-.2.4-.4.7-.5zm-1.2 1.2 1.9-.6c-.2.6-.4 1.2-.5 1.8l-2.2.7c.2-.7.5-1.4.8-1.9zM10 5.6c.4-1 .9-1.6 1.5-1.8-.4.5-.7 1.1-.9 1.6l-.6.2zm2.8 1.4c.1-.5.2-1 .4-1.4l1 .3-1.4 1.1z" />
-    </svg>
-  );
-}
-
 function OldLabel({ small = false }: { small?: boolean }) {
   return (
     <span
@@ -73,8 +65,14 @@ function NewLabel({ small = false }: { small?: boolean }) {
         small ? "h-8 px-3 text-label shadow-card" : "h-9 px-4 text-small shadow-lift"
       }`}
     >
-      <ShopifyMark />
-      Til Shopify
+      Til
+      <Image
+        src="/media/shopify-logo.png"
+        alt="Shopify"
+        width={417}
+        height={120}
+        className={small ? "h-4 w-auto" : "h-5 w-auto"}
+      />
     </span>
   );
 }

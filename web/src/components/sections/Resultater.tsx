@@ -76,9 +76,8 @@ const google: Proof = {
 
 // Hva vi gjorde (bruker 2026-09-26). Kunden navngis ikke på forsiden.
 const tiltak = [
-  "Økte det kreative volumet",
-  "Testet 10x flere konsepter",
   "Økte annonsevolumet med 100 %",
+  "Testet 10x flere konsepter",
   "Satte opp riktig tracking, inkludert server-side tracking",
 ];
 
@@ -87,6 +86,7 @@ const resultat = [
   { label: "Økning i omsetning", value: "+2 mill. kr" },
   { label: "Budsjett", value: "+50 %" },
   { label: "Lønnsomhet (ROAS)", value: "Uendret" },
+  { label: "Vinnende annonser", value: "5x" },
 ];
 
 // Markup er lik på server og klient (starter på 0); ved redusert bevegelse
@@ -258,9 +258,6 @@ export function Resultater() {
         <div ref={proofRef} className="col-span-12 flex flex-col gap-10 pt-4 lg:col-span-7 lg:gap-12 lg:pl-6">
           <ProofCard proof={meta} run={inView} instant={reduce} scale={scale} />
           <ProofCard proof={google} run={inView} instant={reduce} className="lg:ml-12" floatDelay={1.5} />
-          <p className="text-small text-fg-muted">
-            Skjermbilder tatt rett fra kundens annonsekontoer.
-          </p>
         </div>
       </div>
     </section>

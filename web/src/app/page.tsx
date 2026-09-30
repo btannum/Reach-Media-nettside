@@ -22,9 +22,9 @@ export default function Home() {
         <Hero />
         <Problem />
       </AdStage>
+      <Kundelogoer />
       <Resultater />
       <Ugc />
-      <Kundelogoer />
       <Sammenligning />
       <AdsGallery />
       <Caser />
