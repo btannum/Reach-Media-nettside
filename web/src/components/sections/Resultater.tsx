@@ -74,19 +74,21 @@ const google: Proof = {
   caption: "1,44 M i konverteringsverdi",
 };
 
-// Hva vi gjorde (bruker 2026-09-26). Kunden navngis ikke på forsiden.
+// Slik jobber vi (bruker 2026-09-30: generelt, ikke én kunde).
 const tiltak = [
-  "Økte annonsevolumet med 100 %",
-  "Testet 10x flere konsepter",
-  "Satte opp riktig tracking, inkludert server-side tracking",
+  "Nye konsepter og vinkler hver uke",
+  "Mange annonser i test samtidig, så vinnerne dukker opp raskt",
+  "Skalerer det som selger, og kutter det som ikke gjør det",
+  "Riktig tracking i bunn, inkludert server-side",
 ];
 
-// Resultatet, som enkle linjer i stedet for store tall.
+// Summert fra de åtte kampanjene i Meta-skjermbildet (public/proof/meta-ads-manager.png).
+// ROAS er vektet etter spend: 3,72 mill. kr i verdi / 287 004 kr brukt = 12,95.
 const resultat = [
-  { label: "Økning i omsetning", value: "+2 mill. kr" },
-  { label: "Budsjett", value: "+50 %" },
-  { label: "Lønnsomhet (ROAS)", value: "Uendret" },
-  { label: "Vinnende annonser", value: "5x" },
+  { label: "Salg", value: "3 048" },
+  { label: "Annonsekroner brukt", value: "287 000 kr" },
+  { label: "Gjennomsnittlig ROAS", value: "12,9" },
+  { label: "Beste annonsesett", value: "24,15 ROAS" },
 ];
 
 // Markup er lik på server og klient (starter på 0); ved redusert bevegelse
@@ -192,7 +194,7 @@ function ProofCard({
   );
 }
 
-// Seksjon: resultater fra en kunde (ikke navngitt på forsiden).
+// Seksjon: resultater vi har skapt, uten å navngi kunden.
 // Meta-kortet vokser ut mens du scroller (som rutenettet i videoen).
 export function Resultater() {
   const reduce = Boolean(useReducedMotion());
@@ -225,12 +227,12 @@ export function Resultater() {
             </motion.span>
           </div>
           <p className="measure mt-6 text-body text-fg-muted">
-            En nettbutikk vi har jobbet med i litt under ett år. Sammen har vi
-            økt omsetningen med over 2 millioner kroner, uten å gå på
-            bekostning av lønnsomheten.
+            Tallene er hentet rett fra annonsekontoene vi styrer. Det som
+            driver dem, er kreativt arbeid. Vi lager mange annonser, tester
+            nye vinkler hele tiden og legger budsjettet bak det som selger.
           </p>
 
-          <h3 className="mt-10 text-title">Dette gjorde vi</h3>
+          <h3 className="mt-10 text-title">Slik gjør vi det</h3>
           <ul className="mt-4 flex flex-col gap-3">
             {tiltak.map((t) => (
               <li key={t} className="flex items-start gap-3 text-body text-fg">
@@ -240,7 +242,7 @@ export function Resultater() {
             ))}
           </ul>
 
-          <h3 className="mt-10 text-title">Resultatet</h3>
+          <h3 className="mt-10 text-title">Tallene</h3>
           <dl className="mt-4 border-t border-hairline">
             {resultat.map((r) => (
               <div key={r.label} className="flex items-baseline justify-between gap-6 border-b border-hairline py-3">
@@ -250,8 +252,8 @@ export function Resultater() {
             ))}
           </dl>
           <p className="measure mt-4 text-small text-fg-muted">
-            Over 2 millioner kroner ekstra i omsetning, med samme ROAS på 50 %
-            mer budsjett.
+            3 048 salg på 287 000 kr i annonsekroner. Det gir en
+            gjennomsnittlig ROAS på 12,9 på Meta.
           </p>
         </div>
 

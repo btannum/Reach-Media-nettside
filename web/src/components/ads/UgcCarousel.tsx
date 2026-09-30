@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
+import { motion, useReducedMotion } from "framer-motion";
 import type { Ad } from "@/lib/ads";
 import { AdCard } from "@/components/ads/AdCard";
 
@@ -21,12 +22,16 @@ export function UgcCarousel({
   const list = useRef<HTMLUListElement>(null);
   const [atStart, setAtStart] = useState(true);
   const [atEnd, setAtEnd] = useState(false);
+  const [progress, setProgress] = useState(0);
+  const reduce = Boolean(useReducedMotion());
 
   const update = useCallback(() => {
     const el = list.current;
     if (!el) return;
     setAtStart(el.scrollLeft <= 4);
     setAtEnd(el.scrollLeft + el.clientWidth >= el.scrollWidth - 4);
+    const max = el.scrollWidth - el.clientWidth;
+    setProgress(max > 0 ? el.scrollLeft / max : 0);
   }, []);
 
   useEffect(() => {
@@ -44,6 +49,8 @@ export function UgcCarousel({
   };
 
   const arrow = "grid size-11 place-items-center rounded-full border border-hairline bg-surface text-fg shadow-card transition-[opacity,border-color] duration-[180ms] ease-state hover:border-hairline-strong disabled:pointer-events-none disabled:opacity-35";
+  // Neste-pilen er fylt blå så det er tydelig at det finnes flere videoer.
+  const arrowNext = "grid size-12 place-items-center rounded-full bg-signal text-white shadow-lift transition-[opacity,transform] duration-[180ms] ease-state hover:scale-105 disabled:pointer-events-none disabled:bg-surface disabled:text-fg disabled:opacity-35 disabled:shadow-card";
 
   return (
     <div>
@@ -66,17 +73,52 @@ export function UgcCarousel({
           </li>
         ))}
       </ul>
-      <div className="mt-4 flex items-center justify-end gap-2">
+      <div className="mt-4 flex items-center gap-4">
+        {/* Sveip-hint + fremdriftslinje (bruker 2026-09-30: tydeligere at man kan bla). */}
+        <div className="flex min-w-0 flex-1 items-center gap-3">
+          <span className="flex shrink-0 items-center gap-2 text-small font-medium text-fg">
+            <motion.svg
+              viewBox="0 0 24 24"
+              className="size-5 text-signal"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              aria-hidden="true"
+              animate={reduce || !atStart ? undefined : { x: [0, -6, 0] }}
+              transition={{ duration: 1.4, repeat: Infinity, ease: "easeInOut" }}
+            >
+              <path d="M9 11V5.5a1.5 1.5 0 0 1 3 0V11m0-1.5a1.5 1.5 0 0 1 3 0V11m0-.5a1.5 1.5 0 0 1 3 0v3.5a6 6 0 0 1-6 6h-1a6 6 0 0 1-4.6-2.1L4.2 14.6a1.5 1.5 0 0 1 2.3-1.9L9 15" />
+            </motion.svg>
+            <span className="lg:hidden">Sveip for flere</span>
+            <span className="hidden lg:inline">Bla for flere</span>
+          </span>
+          <span aria-hidden="true" className="relative h-1 w-full max-w-40 overflow-hidden rounded-full bg-hairline">
+            <span
+              className="absolute inset-y-0 left-0 rounded-full bg-signal"
+              style={{ width: `${Math.max(12, progress * 100)}%` }}
+            />
+          </span>
+        </div>
         <button type="button" onClick={() => step(-1)} disabled={atStart} aria-label="Forrige video" className={arrow}>
           <svg viewBox="0 0 24 24" className="size-5" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
             <path d="M20 12H5M11 6l-6 6 6 6" />
           </svg>
         </button>
-        <button type="button" onClick={() => step(1)} disabled={atEnd} aria-label="Neste video" className={arrow}>
+        <motion.button
+          type="button"
+          onClick={() => step(1)}
+          disabled={atEnd}
+          aria-label="Neste video"
+          className={arrowNext}
+          animate={reduce || !atStart ? undefined : { x: [0, 4, 0] }}
+          transition={{ duration: 1.4, repeat: Infinity, ease: "easeInOut" }}
+        >
           <svg viewBox="0 0 24 24" className="size-5" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
             <path d="M4 12h15M13 6l6 6-6 6" />
           </svg>
-        </button>
+        </motion.button>
       </div>
     </div>
   );
