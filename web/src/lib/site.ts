@@ -1,6 +1,6 @@
 export const site = {
   name: "Reach Media",
-  url: "https://reachmedia.no",
+  url: "https://www.reachmedia.no",
   email: "post@reachmedia.no",
   orgNr: "928 512 142",
   contact: {
