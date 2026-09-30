@@ -82,14 +82,6 @@ const tiltak = [
   "Riktig tracking i bunn, inkludert server-side",
 ];
 
-// Summert fra de åtte kampanjene i Meta-skjermbildet (public/proof/meta-ads-manager.png).
-// ROAS er vektet etter spend: 3,72 mill. kr i verdi / 287 004 kr brukt = 12,95.
-const resultat = [
-  { label: "Salg", value: "3 048" },
-  { label: "Annonsekroner brukt", value: "287 000 kr" },
-  { label: "Gjennomsnittlig ROAS", value: "12,9" },
-  { label: "Beste annonsesett", value: "24,15 ROAS" },
-];
 
 // Markup er lik på server og klient (starter på 0); ved redusert bevegelse
 // hoppes det rett til sluttverdien i effekten.
@@ -242,19 +234,6 @@ export function Resultater() {
             ))}
           </ul>
 
-          <h3 className="mt-10 text-title">Tallene</h3>
-          <dl className="mt-4 border-t border-hairline">
-            {resultat.map((r) => (
-              <div key={r.label} className="flex items-baseline justify-between gap-6 border-b border-hairline py-3">
-                <dt className="text-body text-fg-muted">{r.label}</dt>
-                <dd className="tnum text-body font-semibold text-fg">{r.value}</dd>
-              </div>
-            ))}
-          </dl>
-          <p className="measure mt-4 text-small text-fg-muted">
-            3 048 salg på 287 000 kr i annonsekroner. Det gir en
-            gjennomsnittlig ROAS på 12,9 på Meta.
-          </p>
         </div>
 
         <div ref={proofRef} className="col-span-12 flex flex-col gap-10 pt-4 lg:col-span-7 lg:gap-12 lg:pl-6">

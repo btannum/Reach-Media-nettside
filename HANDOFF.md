@@ -40,7 +40,7 @@ Den eldre `HANDOFF-2026-09-26.md` gjelder fortsatt for det den beskriver (Om oss
 - **Spekebua-casen:** ingen omtale av Shopify-flytting eller server-side tracking (Bendik vil ikke nevne det). Fokus på volum i konsepter og vinkler. Tall nr. 3 er «10x flere konsepter testet». Også fjernet «For Spekebua: over 10 000 datapunkter» i Tjenester.
 - **Rekkefølge:** «Butikker vi har skalert» (Kundelogoer) ligger rett etter Problem-seksjonen, før Resultater.
 - **Delingsbilde:** `src/app/opengraph-image.png` (1200×630, logo på hvitt) så lenkedeling ikke viser første annonse.
-- **Resultater (generell):** ingen «+2 mill.» lenger. Ingress om kreativt arbeid, «Slik gjør vi det» (4 punkter), «Tallene»: 3 048 salg, 287 000 kr brukt, snitt-ROAS 12,9, beste annonsesett 24,15. Summert fra de 8 kampanjene i Meta-skjermbildet (ROAS vektet etter spend). Google holdt utenfor (ROAS ~62, sannsynligvis brand).
+- **Resultater (generell):** ingen «+2 mill.» lenger. Ingress om kreativt arbeid, «Slik gjør vi det» (4 punkter). Tall-tabellen er fjernet etter ønske fra Bendik, skjermbildene viser tallene selv.
 - **UGC-karusell:** fylt blå neste-pil som dytter, «Sveip/Bla for flere» med håndikon og fremdriftslinje. Gjelder også KLA-casesiden.
 - **Domene:** `site.url` er nå `https://www.reachmedia.no`. Apex `reachmedia.no` peker ikke til Vercel (videresending som bare tar forsiden, undersider gir 404). Bør flyttes til Vercel i DNS. Ikke gjort.
 - **Åpent:** Spekebua-kortet i Kundelogoer har fortsatt «+2 mill på ett år». Spurt, ikke besvart.
