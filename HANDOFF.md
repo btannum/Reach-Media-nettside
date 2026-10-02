@@ -1,6 +1,6 @@
 # Handoff: Reach Media nettside
 
-**Sist oppdatert:** 2026-09-30
+**Sist oppdatert:** 2026-10-02
 **Status:** Bendik er fornøyd med siden slik den er nå. Alt er pushet og live. Ingen lokale endringer venter.
 
 Les denne filen først. Deretter `PRODUCT.md`, `DESIGN.md` og `SPEC.md` ved behov.
@@ -15,7 +15,7 @@ Den eldre `HANDOFF-2026-09-26.md` gjelder fortsatt for det den beskriver (Om oss
 | Kode | `~/Prosjekter/Reach Media Nettside/web` (Next.js 16, React 19, Tailwind v4, Framer Motion) |
 | Repo | https://github.com/btannum/Reach-Media-nettside (branch `main`) |
 | Hosting | Vercel, Root Directory = `web`. Hver push til `main` deployer automatisk (1–2 min) |
-| Domene | **reachmedia.no** er koblet til og live. Vercel-URL: reach-media-nettside.vercel.app |
+| Domene | Siden kjører på **www.reachmedia.no** (`site.url` i `lib/site.ts`). Apex `reachmedia.no` ligger ikke hos Vercel, se Åpne tråder. Vercel-URL: reach-media-nettside.vercel.app |
 | Analytics | Vercel Web Analytics (`<Analytics />` i `layout.tsx`). Må være slått på i Vercel-panelet |
 | Lokal preview | `cd web && npm run dev -- -p 3002` → http://localhost:3002 (port 3000 er opptatt av noe annet) |
 | Ikke rør | `~/Prosjekter/Reach Media Nettside Grok` (kjører på :3001) |
@@ -34,17 +34,36 @@ Den eldre `HANDOFF-2026-09-26.md` gjelder fortsatt for det den beskriver (Om oss
 
 ---
 
-## Hva vi gjorde 30. september (alt live)
+## Hva vi gjorde 30. september – 2. oktober (alt live)
 
-- **Resultater:** fjernet «Skjermbilder tatt rett fra kundens annonsekontoer.» Punkter nå: annonsevolum +100 %, 10x flere konsepter, tracking. «Vinnende annonser 5x» ligger som egen linje under «Resultatet».
-- **Spekebua-casen:** ingen omtale av Shopify-flytting eller server-side tracking (Bendik vil ikke nevne det). Fokus på volum i konsepter og vinkler. Tall nr. 3 er «10x flere konsepter testet». Også fjernet «For Spekebua: over 10 000 datapunkter» i Tjenester.
-- **Rekkefølge:** «Noen av kundene våre.» (Kundelogoer, het «Butikker vi har skalert») ligger rett etter Problem-seksjonen, før Resultater.
-- **Delingsbilde:** `src/app/opengraph-image.png` (1200×630, logo på hvitt) så lenkedeling ikke viser første annonse.
-- **Resultater (generell):** ingen «+2 mill.» lenger. Ingress om kreativt arbeid, «Slik gjør vi det» (4 punkter). Tall-tabellen er fjernet etter ønske fra Bendik, skjermbildene viser tallene selv.
-- **UGC-karusell:** fylt blå neste-pil som dytter, «Sveip/Bla for flere» med håndikon og fremdriftslinje. Gjelder også KLA-casesiden.
-- **Domene:** `site.url` er nå `https://www.reachmedia.no`. Apex `reachmedia.no` peker ikke til Vercel (videresending som bare tar forsiden, undersider gir 404). Bør flyttes til Vercel i DNS. Ikke gjort.
-- **Åpent:** Spekebua-kortet i Kundelogoer har fortsatt «+2 mill på ett år». Spurt, ikke besvart.
-- **KLA før/etter:** merket viser «Til» + ekte Shopify-logo (`public/media/shopify-logo.png`, transparent). Kilde: `Medier /Logoer/shopify-logo.png`.
+### Forsiden, rekkefølge (`app/page.tsx`)
+Hero → Problem («Dette gjør vi for å lykkes …») → **Kundelogoer** → Resultater → UGC → resten som før. Kundelogoer ble flyttet opp for mer action tidlig.
+
+### Kundelogoer (`Kundelogoer.tsx`)
+- Overskrift **«Noen av kundene våre.»** (var «Butikker vi har skalert.»). Etiketten over sier fortsatt «Kunder».
+
+### Resultater (`Resultater.tsx`), nå generell, ikke én kunde
+- Ingen «+2 mill.», «+50 % budsjett» eller andre tall som peker mot Spekebua.
+- Ingress: tallene er fra annonsekontoene vi styrer, drevet av kreativt arbeid (mange annonser, nye vinkler, budsjett bak det som selger).
+- «Slik gjør vi det»: nye konsepter og vinkler hver uke / mange annonser i test samtidig / skalerer det som selger, kutter resten / riktig tracking i bunn.
+- Tall-tabellen og bildeteksten «Skjermbilder tatt rett fra kundens annonsekontoer.» er fjernet. Skjermbildene (Meta + Google) med pillene står igjen og viser tallene selv.
+- Til info hvis tall trengs igjen: de 8 Meta-kampanjene i skjermbildet summerer til 3 048 kjøp, 287 004 kr brukt, vektet ROAS 12,95.
+
+### Spekebua-casen (`lib/projects.ts`, `/prosjekter/spekebua`)
+- **Ikke nevn Shopify-flyttingen eller server-side tracking** (Bendik). Tags «Shopify-migrering» og «Server-side tracking» fjernet.
+- Tall nr. 3: «10x flere konsepter testet» (var «10 000+ datapunkter flyttet»).
+- Avsnitt 2 handler om volum: 10x flere konsepter, doblet antall annonser, nye vinkler å skalere på.
+- Tjenester: fjernet «For Spekebua: over 10 000 datapunkter».
+
+### UGC-karusell (`ads/UgcCarousel.tsx`)
+- Fylt blå neste-pil (større) som dytter til man har bladd, «Sveip for flere» (mobil) / «Bla for flere» (PC) med håndikon, og fremdriftslinje. Gjelder også KLA-casesiden.
+
+### KLA før/etter (`BeforeAfter.tsx`)
+- Merket viser «Til» + ekte Shopify-logo (`public/media/shopify-logo.png`, transparent bakgrunn). Kilde: `Medier /Logoer/shopify-logo.png`.
+
+### Delingsbilde
+- `src/app/opengraph-image.png` (1200×630, Reach Media-logo på hvitt, laget fra logo-PDF-en). Lenkedeling viste før første annonse (BikePlay).
+- `site.url` endret til `https://www.reachmedia.no`, ellers ga bildet 404 (se domene under).
 
 ---
 
@@ -102,7 +121,8 @@ Den eldre `HANDOFF-2026-09-26.md` gjelder fortsatt for det den beskriver (Om oss
 ---
 
 ## Åpne tråder (ikke gjort, spør før du gjør noe)
-- Spekebua-navnet står fortsatt i case-kortet og på `/prosjekter/spekebua` (bare fjernet fra Resultater). Spurt, ikke besvart.
+- **DNS:** apex `reachmedia.no` peker til en videresending (AWS, ikke Vercel) som bare sender forsiden til www. Undersider uten www (f.eks. `reachmedia.no/prosjekter/kla`) gir 404. Fiks: A-post `76.76.21.21` hos domeneleverandøren + videresending apex → www i Vercel. Bendik/Jimmy må gjøre det.
+- Spekebua-kortet i Kundelogoer sier fortsatt «+2 mill på ett år. Samme lønnsomhet.», og Spekebua er navngitt i case-kortet og på `/prosjekter/spekebua`. Spurt, ikke besvart.
 - På telefoner ≤360 px bredde stikker hero-annonsekortene litt ut til høyre. Ikke et problem på iPhone 17 Pro (402 px).
 - De nye UGC-videoene kan komprimeres mer hvis siden skal bli lettere.
 - Hvis Analytics ikke viser data: slå på Web Analytics i Vercel-prosjektet.
