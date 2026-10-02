@@ -38,7 +38,7 @@ Den eldre `HANDOFF-2026-09-26.md` gjelder fortsatt for det den beskriver (Om oss
 
 - **Resultater:** fjernet «Skjermbilder tatt rett fra kundens annonsekontoer.» Punkter nå: annonsevolum +100 %, 10x flere konsepter, tracking. «Vinnende annonser 5x» ligger som egen linje under «Resultatet».
 - **Spekebua-casen:** ingen omtale av Shopify-flytting eller server-side tracking (Bendik vil ikke nevne det). Fokus på volum i konsepter og vinkler. Tall nr. 3 er «10x flere konsepter testet». Også fjernet «For Spekebua: over 10 000 datapunkter» i Tjenester.
-- **Rekkefølge:** «Butikker vi har skalert» (Kundelogoer) ligger rett etter Problem-seksjonen, før Resultater.
+- **Rekkefølge:** «Noen av kundene våre.» (Kundelogoer, het «Butikker vi har skalert») ligger rett etter Problem-seksjonen, før Resultater.
 - **Delingsbilde:** `src/app/opengraph-image.png` (1200×630, logo på hvitt) så lenkedeling ikke viser første annonse.
 - **Resultater (generell):** ingen «+2 mill.» lenger. Ingress om kreativt arbeid, «Slik gjør vi det» (4 punkter). Tall-tabellen er fjernet etter ønske fra Bendik, skjermbildene viser tallene selv.
 - **UGC-karusell:** fylt blå neste-pil som dytter, «Sveip/Bla for flere» med håndikon og fremdriftslinje. Gjelder også KLA-casesiden.

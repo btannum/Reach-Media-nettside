@@ -117,7 +117,7 @@ export function Kundelogoer() {
           <div className="lg:col-span-5">
             <p className="text-label text-fg-muted">Kunder</p>
             <RevealWords
-              text="Butikker vi har skalert."
+              text="Noen av kundene våre."
               className="mt-3 max-w-[12ch] text-headline"
             />
             <p className="mt-4 max-w-[32ch] text-body text-fg-muted">
