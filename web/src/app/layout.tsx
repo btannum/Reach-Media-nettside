@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Schibsted_Grotesk } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import { MotionProvider } from "@/components/MotionProvider";
 import { Nav } from "@/components/Nav";
 import { Footer } from "@/components/Footer";
@@ -57,6 +58,8 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         </MotionProvider>
         {/* Vercel Web Analytics: cookiefri besøksstatistikk. */}
         <Analytics />
+        {/* Vercel Speed Insights: ytelsesmålinger i sanntid. */}
+        <SpeedInsights />
       </body>
     </html>
   );
