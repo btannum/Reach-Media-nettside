@@ -1,7 +1,7 @@
 # Handoff: Reach Media nettside
 
-**Sist oppdatert:** 2026-10-02
-**Status:** Bendik er fornøyd med siden slik den er nå. Alt er pushet og live. Ingen lokale endringer venter.
+**Sist oppdatert:** 2026-10-21
+**Status:** Lokal endring, **ikke pushet**: ny font på overskriftene (Instrument Serif). Ellers er siden som live-versjonen. Startsiden med valg og tjenestesiden er droppet (Bendik 2026-10-21), og Bendik kommer med en ny idé.
 
 Les denne filen først. Deretter `PRODUCT.md`, `DESIGN.md` og `SPEC.md` ved behov.
 Den eldre `HANDOFF-2026-09-26.md` gjelder fortsatt for det den beskriver (Om oss, FAQ, Problem-punkter osv.), men denne filen er nyere der de overlapper.
@@ -33,6 +33,13 @@ Den eldre `HANDOFF-2026-09-26.md` gjelder fortsatt for det den beskriver (Om oss
 **Medier:** kildefiler i `Medier /` (merk mellomrommet i mappenavnet). `web/scripts/media.sh` konverterer til WebP/MP4 i `web/public/media/`.
 
 ---
+
+## Hva vi gjorde 20.–21. oktober (lokalt, ikke pushet)
+
+- **Gjeldende endring:** overskriftene står i Instrument Serif (`text-display`, `text-headline` i `globals.css`, fonten lastes i `layout.tsx`). Nettbutikk-heroen har serif og kursiv på «100 % resultatbasert.». Animasjonen, header, footer, lenker og sidestruktur er som før.
+- **Prøvd og droppet (Bendik 21.10):** en startside der man valgte mellom nettbutikk og tjenestebedrift, egen mørk side for tjenestebedrifter, bryter i headeren og mørk footer. Bendik likte bare fontendringen.
+- **Parkert, ikke live:** tjenestesiden ligger i `src/app/_tjenestebedrift/` (understrek = ikke rutet) med komponenter i `components/tjeneste/` og `components/brand/` (glødende kurve, rutenett, logobånd), og `components/SegmentSwitch.tsx`. Klinikklogoer i `public/media/logos/tjeneste/`, Wellmed-skjermbilder i `public/proof/`, logo for mørk grunn `public/media/logo-dark.png`. Mørke tokens (`night`, `glow`, `mist`, `line`) ligger fortsatt i `globals.css`. Føringene for tjenestebedrifter står i `PRODUCT.md`.
+- **QA:** `node scripts/qa-shot.mjs <ut-mappe> /` (sett `QA_WAIT=3500` for å vente på animasjoner). Preview: `.claude/launch.json` (`reach-nettside`, port 3002).
 
 ## Hva vi gjorde 30. september – 2. oktober (alt live)
 

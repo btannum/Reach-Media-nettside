@@ -56,7 +56,7 @@ Sammenligningsakser (brief): Reach Media vs. vanlig byrå vs. Upwork/Fiverr.
 - **Team på siden (bekreftet av bruker 2026-09-25):** Bendik Tannum (co-founder, kreativ strateg), Kevin Johansen Zeba (co-founder, media buyer, Meta), Sahil (senior developer/backend og Google-ekspert). Jimmy Norberg skal **ikke** nevnes. I tillegg nevnes, uten navn: «en Google-ekspert» og «flere grafiske designere vi jobber med». Budskapet: designerne produserer, men det er Reach Media som planlegger og håndterer annonsene. Ingen oppdiktede personer eller stockbilder.
 - **Vilkår (oppdatert av Bendik 2026-09-26):** ingen bindingstid, 3 måneders oppsigelse (byrå-CLAUDE.md sier 1 mnd; siden bruker 3), oppstartsdepositum 5 000 kr som trekkes fra første faktura (interne vilkår). Hero sier «Ingen oppstartskostnad» (Bendik 2026-09-26): depositumet regnes ikke som kostnad siden det trekkes fra. Eksakt prosentsats oppgis ikke på siden.
 - **Betalingsmodell (avklart 2026-09-25):** hovedsakelig 100 % provisjon av omsetning, men tilpasses marginer; fastpris finnes for de som vil ha det. Se Positioning.
-- Ingen fabrikkerte «+N kunder»-tall, testimonialer eller benchmarks.
+- Ingen fabrikkerte «+N kunder»-tall, testimonialer eller benchmarks. Unntak bekreftet av Bendik 2026-10-21: «over 70 bedrifter hjulpet over hele Norge» (erstatter regelen om at «50+» ikke brukes).
 
 ## Brand Commitments
 
@@ -92,3 +92,18 @@ Sammenligningsakser (brief): Reach Media vs. vanlig byrå vs. Upwork/Fiverr.
 ## Accessibility & Inclusion
 
 WCAG 2.1 AA som minimum (norsk offentlig-sektor-krav gjelder ikke, men mørk bakgrunn krever bevisst kontrast: muted-tekst #94A3B8 på #0A0E17 er ≈7:1, OK; sjekk blå #3B82F6 som tekstfarge på mørk bakgrunn ≈4.6:1, OK for normal tekst, marginal for tynn liten tekst). Motion respekterer `prefers-reduced-motion`. Skjemaet skal fungere uten JavaScript-animasjoner.
+
+## Tjenestebedrifter (eget segment fra 2026-10-20, PARKERT 2026-10-21)
+
+> Bendik droppet valgsiden og tjenestesiden 21.10 og kommer med en ny idé. Koden ligger i `web/src/app/_tjenestebedrift/` (ikke live). Føringene under gjelder fortsatt hvis tjenestebedrifter tas opp igjen.
+
+Kilde: Bendik i chat 2026-10-20 og 2026-10-21. Plan og copyhistorikk: `PLAN-tjenestebedrifter.md`, `copy-tjenestebedrift.md`.
+
+- **Struktur (prøvd og droppet):** valgside på `/`, nettbutikk på `/nettbutikk`, egen side `/tjenestebedrift` og bryter i headeren. Nå er `/` nettbutikk-siden som før.
+- **Målgruppe:** hovedsakelig skjønnhetsklinikker, men ordlyden holdes bred («tjenestebedrift», «kunder», «time»).
+- **Påstander Bendik står for:** «over 70 bedrifter hjulpet over hele Norge»; «uke for uke booker vi inn titalls nye bookinger» (Reachs egen påstand, ikke Wellmed-data, aldri i anførselstegn).
+- **Bevis:** skjermbildene i `Medier /Beauty/` er fra Wellmed Hudpleieklinikk (Microneedling 91 leads, 141,51 kr/lead; Rejuvenating Needle 103 leads, 143,71 kr/lead). Periode oppgis ikke (Bendik). Wellmed er ok med å bli navngitt med tallene (Bendik 2026-10-21).
+- **Pris:** kunden betaler oss per booking. Anbefalt annonsebudsjett 10 000 kr/mnd, gjerne mer, som kommer i tillegg og betales til Meta. Ingen garantier på siden.
+- **Leveranse:** ikke konkret, tilpasses kunden. Ingen video nevnes. Vi kan tilby direkte booking og automatisk oppfølging.
+- **Logoer:** alle åtte klinikklogoene brukes (Luxio Skin er en klinikk). Ikke alle er nåværende kunder, derfor «bedriftene vi har jobbet med». Spekebua og Novito holdes utenfor startsiden.
+- **Merkevare (2026-10-21):** overskrifter i Instrument Serif, brødtekst i Schibsted Grotesk. **Dette er tatt i bruk på hele nettsiden.** Mørk flate med glødende kurve og mørk footer ble prøvd og droppet. Inspirasjon: stille.no (typografi).

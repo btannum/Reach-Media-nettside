@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Schibsted_Grotesk } from "next/font/google";
+import { Instrument_Serif, Schibsted_Grotesk } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import { MotionProvider } from "@/components/MotionProvider";
 import { Nav } from "@/components/Nav";
@@ -11,6 +11,14 @@ const schibsted = Schibsted_Grotesk({
   variable: "--font-schibsted",
   subsets: ["latin", "latin-ext"],
   weight: ["400", "500", "700", "800"],
+  display: "swap",
+});
+
+const instrument = Instrument_Serif({
+  variable: "--font-instrument",
+  subsets: ["latin", "latin-ext"],
+  weight: "400",
+  style: ["normal", "italic"],
   display: "swap",
 });
 
@@ -39,7 +47,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     <html
       lang="nb"
       data-scroll-behavior="smooth"
-      className={`${schibsted.variable} h-full`}
+      className={`${schibsted.variable} ${instrument.variable} h-full`}
     >
       <body className="flex min-h-full flex-col">
         <a
